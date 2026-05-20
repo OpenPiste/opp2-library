@@ -1,0 +1,2 @@
+add_executable(subscriber_basic main.cpp)
+target_link_libraries(subscriber_basic PRIVATE opp2_deps)
