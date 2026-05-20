@@ -239,7 +239,7 @@ pio test -e native -f test_serialize
 
 This library is one component of the [OpenPiste](https://openpiste.org) open source fencing electronics platform — a complete alternative to expensive proprietary scoring equipment, covering scoring hardware, weapon and wire testing, remote controls, piste monitoring, and electronics designs.
 
-The platform is developed by Piet Wauters, member of the FIE SEMI Commission (technology commission of the International Fencing Federation) and EFC SEMI Commission, and field-tested at international competitions including the European Fencing Championships.
+The platform is developed by Piet Wauters, member of the FIE SEMI Commission (technology commission of the International Fencing Federation) and EFC SEMI Commission, and field-tested at international competitions.
 
 - Platform website: [openpiste.org](https://openpiste.org)
 - Platform organisation: [github.com/OpenPiste](https://github.com/OpenPiste)
