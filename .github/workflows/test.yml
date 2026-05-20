@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    name: Unit tests (native)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Cache PlatformIO
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.platformio
+            .pio
+          key: pio-${{ runner.os }}-${{ hashFiles('platformio.ini') }}
+          restore-keys: |
+            pio-${{ runner.os }}-
+
+      - name: Install PlatformIO
+        run: pip install platformio
+
+      - name: Run tests
+        run: pio test -e native -v

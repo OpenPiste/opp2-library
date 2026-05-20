@@ -1,0 +1,46 @@
+{
+  "name": "OPP2",
+  "version": "0.1.0",
+  "description": "OpenPiste Protocol Level 2 — reference implementation. MQTT/JSON communication library for fencing electronics. Serializer, deserializer, and dispatcher for all OPP2 message types.",
+  "keywords": [
+    "fencing",
+    "mqtt",
+    "json",
+    "openpiste",
+    "opp2",
+    "iot",
+    "esp32",
+    "scoring"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OpenPiste/opp2-library"
+  },
+  "authors": [
+    {
+      "name": "Piet Wauters",
+      "url": "https://github.com/pietwauters",
+      "maintainer": true
+    }
+  ],
+  "license": "MIT",
+  "homepage": "https://openpiste.org",
+  "dependencies": {
+    "bblanchon/ArduinoJson": "^7.0.0"
+  },
+  "frameworks": [
+    "arduino",
+    "espidf",
+    "*"
+  ],
+  "platforms": [
+    "espressif32",
+    "espressif8266",
+    "native",
+    "*"
+  ],
+  "build": {
+    "srcDir": "src",
+    "includeDir": "src"
+  }
+}

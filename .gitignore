@@ -1,0 +1,28 @@
+# PlatformIO build output
+.pio/
+
+# PlatformIO IDE files
+.pioenvs/
+.piolibdeps/
+.clang_complete
+.gcc-flags.json
+
+# VSCode
+.vscode/
+
+# Doxygen generated output — generate locally or via CI, do not commit
+docs/html/
+docs/latex/
+docs/xml/
+
+# Keep the Doxyfile itself (it's config, not output)
+!Doxyfile
+
+# macOS
+.DS_Store
+
+# Linux
+*~
+
+# Windows
+Thumbs.db
