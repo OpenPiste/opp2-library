@@ -490,7 +490,15 @@ public:
             JsonArray calls = sideObj["calls"].to<JsonArray>();
             for (uint8_t i = 0; i < side.call_count; ++i) {
                 const VideoCall& vc = side.calls[i];
-                JsonObject callObj = calls.add<JsonObject>();
+                // createNestedObject(), not add<JsonObject>() -- the latter
+                // is ArduinoJson v7-only (no-arg template add<T>()); the
+                // former is a deprecated-but-functional compatibility
+                // method present in both v6 and v7 (confirmed in
+                // ArduinoJson's own compatibility.hpp), so this line
+                // compiles correctly against consumers pinned to either
+                // major version. This is the only v7-only construct found
+                // anywhere in this library as of 2026-08-13.
+                JsonObject callObj = calls.createNestedObject();
                 callObj["id"]      = vc.id;
                 callObj["round"]   = vc.round;
                 callObj["time_ms"] = vc.time_ms;
