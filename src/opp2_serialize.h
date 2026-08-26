@@ -67,14 +67,14 @@ enum class SerializeError : uint8_t {
 static const size_t JSON_SIZE_LIGHTS       = 384; // was 128 -- too small for protocol+version+seq+ts plus both right/left nested objects under ArduinoJson v6's fixed StaticJsonDocument pool (measured minimum 320, verified empirically against v6.21.6); silently produced "left":{} with data loss and no error
 static const size_t JSON_SIZE_CLOCK        = 128;
 static const size_t JSON_SIZE_BLADE_CONTACT= 96;
-static const size_t JSON_SIZE_SCORE        = 256;
-static const size_t JSON_SIZE_CONNECTION   = 160;
+static const size_t JSON_SIZE_SCORE        = 288; // was 256 -- measured minimum on real ESP32 hardware (xtensa-esp32, ArduinoJson v6.21.6) is exactly 256, i.e. zero margin; bumped for headroom
+static const size_t JSON_SIZE_CONNECTION   = 224; // was 160 -- worst case (device+fw_version both near their 64/32-byte max) needs 192 on real ESP32 hardware; silently dropped those fields with no error
 static const size_t JSON_SIZE_STATE        = 96;
-static const size_t JSON_SIZE_FENCERS      = 512;
-static const size_t JSON_SIZE_MATCH        = 256;
-static const size_t JSON_SIZE_UW2F         = 160;
+static const size_t JSON_SIZE_FENCERS      = 640; // was 512 -- worst case (both coaches + referee + video_official, all fields at max length) needs 480 on real ESP32 hardware, i.e. ~6% margin; bumped for headroom
+static const size_t JSON_SIZE_MATCH        = 320; // was 256 -- worst case (competition name near its 64-byte max) needs 296 on real ESP32 hardware; silently dropped fields with no error
+static const size_t JSON_SIZE_UW2F         = 192; // was 160 -- measured minimum on real ESP32 hardware is 152, i.e. ~5% margin; bumped for headroom
 static const size_t JSON_SIZE_MEDICAL      = 192;
-static const size_t JSON_SIZE_VIDEO_REVIEW = 512;
+static const size_t JSON_SIZE_VIDEO_REVIEW = 1024; // was 512 -- sized for a realistic active bout (measured 784 for 4 calls/side on real ESP32 hardware; 512 already silently truncates beyond ~2-3 calls/side). NOT sized for the struct's full documented max of OPP2_MAX_VIDEO_CALLS (16) per side, which needs ~2.7KB -- a bout with that many calls is explicitly documented as a very conservative upper bound and would still truncate silently; revisit if that turns out to matter in practice.
 static const size_t JSON_SIZE_CONTROL      = 160;
 
 /// Safe size for any single OPP2 message (use when type is not known at
