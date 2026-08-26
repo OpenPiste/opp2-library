@@ -64,7 +64,7 @@ enum class SerializeError : uint8_t {
 // These are generous — actual output is typically 30–50% smaller.
 // ============================================================================
 
-static const size_t JSON_SIZE_LIGHTS       = 128;
+static const size_t JSON_SIZE_LIGHTS       = 384; // was 128 -- too small for protocol+version+seq+ts plus both right/left nested objects under ArduinoJson v6's fixed StaticJsonDocument pool (measured minimum 320, verified empirically against v6.21.6); silently produced "left":{} with data loss and no error
 static const size_t JSON_SIZE_CLOCK        = 128;
 static const size_t JSON_SIZE_BLADE_CONTACT= 96;
 static const size_t JSON_SIZE_SCORE        = 256;
